@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ncurses/ncurses.h>
+#include <time.h>
 const int w = 6;
 const int h = 6;
 int board[h][w] = {
