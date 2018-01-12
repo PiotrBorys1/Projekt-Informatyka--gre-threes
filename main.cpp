@@ -16,11 +16,16 @@ int board[h][w] = {
 };
 
 void display_board() {
-    for (int i = 0; i < h; ++i ) {
-        for (int l = 0; l < w; ++l) {
-            if ( board[i][l] == 0) {
+    for (int i = 0; i < h; ++i )
+    {
+        for (int l = 0; l < w; ++l)
+        {
+            if ( board[i][l] == 0) 
+            {
                 std::cout << "| ---- |";
-            } else {
+            } 
+            else
+            {
                 char value[10] = "";
                 sprintf(value, "| %4d |", board[i][l]);
                std::cout << value;
@@ -33,12 +38,17 @@ void display_board() {
 void move_left() {
 
 
-    for (int i = 0; i < h; ++i) {
-        for (int l = 0; l < w-1 ; l++) {
-            if (board[i][l] == 0) {
+    for (int i = 0; i < h; ++i)
+    {
+        for (int l = 0; l < w-1 ; l++) 
+        {
+            if (board[i][l] == 0)
+            {
                 board[i][l] = board[i][l+1];
                 board[i][l+1] = 0;
-            } else if (board[i][l] == board[i][l+1]) {
+            } 
+            else if (board[i][l] == board[i][l+1]) 
+            {
                 board[i][l] += board[i][l+1];
                 board[i][l+1] = 0;
             }
@@ -52,14 +62,18 @@ void move_right(){
 
 
 
-    for (int i = 0; i < h; i++) {
-        for (int l = w-1; l >0 ; l--) {
-            if (board[i][l] == 0) {
+    for (int i = 0; i < h; i++) 
+    {
+        for (int l = w-1; l >0 ; l--)
+        {
+            if (board[i][l] == 0)
+            {
 
                 board[i][l] = board[i][l-1];
                 board[i][l-1] = 0;
             }
-            else if (board[i][l] == board[i][l-1]) {
+            else if (board[i][l] == board[i][l-1])
+            {
                 board[i][l] += board[i][l-1];
                 board[i][l-1] = 0;
             }
@@ -70,12 +84,17 @@ void move_right(){
 void move_up(){
 initscr();
 
-    for (int i = 0; i < h-1 ; ++i) {
-        for (int l = 0; l < w ; l++) {
-            if (board[i][l] == 0) {
+    for (int i = 0; i < h-1 ; ++i) 
+    {
+        for (int l = 0; l < w ; l++)
+        {
+            if (board[i][l] == 0)
+            {
                 board[i][l] = board[i+1][l];
                 board[i+1][l] = 0;
-            } else if (board[i][l] == board[i+1][l]) {
+            }
+            else if (board[i][l] == board[i+1][l])
+            {
                 board[i][l] += board[i+1][l];
                 board[i+1][l] = 0;
             }
@@ -89,12 +108,17 @@ void move_down(){
 
 
 
-    for (int i = h-1; i >0 ; --i) {
-        for (int l = 0; l < w ; l++) {
-            if (board[i][l] == 0) {
+    for (int i = h-1; i >0 ; --i) 
+    {
+        for (int l = 0; l < w ; l++)
+        {
+            if (board[i][l] == 0)
+            {
                 board[i][l] = board[i-1][l];
                 board[i-1][l] = 0;
-            } else if (board[i][l] == board[i-1][l]) {
+            } 
+            else if (board[i][l] == board[i-1][l]) 
+            {
                 board[i][l] += board[i-1][l];
                 board[i-1][l] = 0;
             }
@@ -106,26 +130,44 @@ void move_down(){
 }
 void punkty(){
     int punkty=0;
-for (int i = 0; i < h ; ++i) {
-        for (int l = 0; l < w ; l++) {
-       if (board[i][l]==16){
-                punkty++;}
-            if (board[i][l]==32){
-                punkty+=3;}
-                if (board[i][l]==64){
-                punkty+=7;}
-                     if (board[i][l]==128){
-                    punkty+=40;}
-                     if (board[i][l]==256){
-                    punkty+=100;}
-                     if (board[i][l]==512){
-                    punkty+=300;}
-                     if (board[i][l]==1024){
-                    punkty+=600;}
-                     if (board[i][l]==2048){
-                    punkty+=1000;}
-                       }
-    }std::cout<<"Punkty gry = "<<punkty<< std::endl;
+for (int i = 0; i < h ; ++i) 
+{
+        for (int l = 0; l < w ; l++) 
+        {
+       if (board[i][l]==16)
+       {
+                punkty++;
+       }
+        if (board[i][l]==32)
+       {
+         punkty+=3;
+       }
+       if (board[i][l]==64)
+       {
+         punkty+=7;
+       }
+       if (board[i][l]==128)
+       {
+         punkty+=40;
+       }
+       if (board[i][l]==256)
+       {
+         punkty+=100;
+       }
+       if (board[i][l]==512)
+      {
+        punkty+=300;
+       }
+       if (board[i][l]==1024)
+       {
+         punkty+=600;
+       }
+       if (board[i][l]==2048)
+       {
+         punkty+=1000;
+       }
+   }
+  }std::cout<<"Punkty gry = "<<punkty<< std::endl;
 }
 
 void losowanie(){
@@ -181,34 +223,30 @@ std::cout <<"Witamy w grze threes"<<std::endl;
 losowanie();
         }
 
-        else if ( i == 6) {
+        else if ( i == 6) 
+        {
             move_right();
-losowanie();
+            losowanie();
 
         }
-        else if ( i == 8) {
-                move_up();
-losowanie();
+        else if ( i == 8)
+        {
+           move_up();
+           losowanie();
         }
-        else if (i == 2) {
-                move_down();
-losowanie();
-                }
+        else if (i == 2)
+        {
+         move_down();
+         losowanie();
+         }
         else
         {
             std::cout<<"zly klawisz "<<std::endl;
         }
 
-punkty();
-
-
-        display_board();
-
-
-    }
-
-
-
+ punkty();
+ display_board();
+   }
 }
 
 int main(){
@@ -252,7 +290,8 @@ else if (znak==2)
 {
     display_board();
     std::cout<<"Wyprobuj teraz gre, masz 8 ruchow"<<std::endl;
-   for(i=0;i<=8;i++){
+   for(i=0;i<=8;i++)
+   {
     std::cin >> znak1;
     system("cls");
 
@@ -286,8 +325,7 @@ else if (znak==2)
     {
 
     }
-   }
-
+  }
 }
 else if (znak==3)
 {
@@ -295,18 +333,9 @@ else if (znak==3)
 }
 else if (znak==4)
 {
-
-
 }
 getch();
 return 0;
-
-
-
-
-
-
-
 }
 
 
