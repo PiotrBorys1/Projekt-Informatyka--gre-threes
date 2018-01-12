@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ncurses/ncurses.h>
 #include <time.h>
+#include <fstream>
 const int w = 6;
 const int h = 6;
 int board[h][w] = {
@@ -21,10 +22,10 @@ void display_board() {
     {
         for (int l = 0; l < w; ++l)
         {
-            if ( board[i][l] == 0) 
+            if ( board[i][l] == 0)
             {
                 std::cout << "| ---- |";
-            } 
+            }
             else
             {
                 char value[10] = "";
@@ -41,14 +42,14 @@ void move_left() {
 
     for (int i = 0; i < h; ++i)
     {
-        for (int l = 0; l < w-1 ; l++) 
+        for (int l = 0; l < w-1 ; l++)
         {
             if (board[i][l] == 0)
             {
                 board[i][l] = board[i][l+1];
                 board[i][l+1] = 0;
-            } 
-            else if (board[i][l] == board[i][l+1]) 
+            }
+            else if (board[i][l] == board[i][l+1])
             {
                 board[i][l] += board[i][l+1];
                 board[i][l+1] = 0;
@@ -63,7 +64,7 @@ void move_right(){
 
 
 
-    for (int i = 0; i < h; i++) 
+    for (int i = 0; i < h; i++)
     {
         for (int l = w-1; l >0 ; l--)
         {
@@ -85,7 +86,7 @@ void move_right(){
 void move_up(){
 initscr();
 
-    for (int i = 0; i < h-1 ; ++i) 
+    for (int i = 0; i < h-1 ; ++i)
     {
         for (int l = 0; l < w ; l++)
         {
@@ -109,7 +110,7 @@ void move_down(){
 
 
 
-    for (int i = h-1; i >0 ; --i) 
+    for (int i = h-1; i >0 ; --i)
     {
         for (int l = 0; l < w ; l++)
         {
@@ -117,8 +118,8 @@ void move_down(){
             {
                 board[i][l] = board[i-1][l];
                 board[i-1][l] = 0;
-            } 
-            else if (board[i][l] == board[i-1][l]) 
+            }
+            else if (board[i][l] == board[i-1][l])
             {
                 board[i][l] += board[i-1][l];
                 board[i-1][l] = 0;
@@ -131,9 +132,9 @@ void move_down(){
 }
 void punkty(){
     int punkty=0;
-for (int i = 0; i < h ; ++i) 
+for (int i = 0; i < h ; ++i)
 {
-        for (int l = 0; l < w ; l++) 
+        for (int l = 0; l < w ; l++)
         {
        if (board[i][l]==16)
        {
@@ -169,6 +170,10 @@ for (int i = 0; i < h ; ++i)
        }
    }
   }std::cout<<"Punkty gry = "<<punkty<< std::endl;
+  std::fstream Wyniki;
+  Wyniki.open("Wyniki.txt", std::ios::out | std::ios::app );
+  Wyniki<<punkty<<std::endl;
+  Wyniki.close();
 }
 
 void losowanie(){
@@ -224,7 +229,7 @@ std::cout <<"Witamy w grze threes"<<std::endl;
 losowanie();
         }
 
-        else if ( i == 6) 
+        else if ( i == 6)
         {
             move_right();
             losowanie();
